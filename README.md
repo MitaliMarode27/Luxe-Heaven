@@ -13,31 +13,5 @@ Tech Stack 💻
 Frontend: Html, Css, React.js.
 FrameWork: Bootsrap, Tailwind
 APIs: Integration with external recipe APIs.
-Getting Started 🚀
-Clone the repository:
-bash
-Copy
-Edit
-git clone https://github.com/yourusername/food-recipe-app.git
-Navigate to the project directory:
-bash
-Copy
-Edit
-cd food-recipe-app
-Install dependencies:
-bash
-Copy
-Edit
-npm install
-Run the development server:
-bash
-Copy
-Edit
-npm start
-Contribution 🤝
-We welcome contributions! Please feel free to open an issue or submit a pull request. For major changes, please discuss them in an issue first.
-
-License 📄
-This project is licensed under the MIT License.
 
 Happy cooking! 👨‍🍳👩‍🍳
