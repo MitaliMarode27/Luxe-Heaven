@@ -1,27 +1,18 @@
 import {Route, Routes } from "react-router-dom";
-import History from "./History";
 import "./App.css";
-import Bollywood from "./Bollywood";
-import Api from "./Api";
-import Sports from "./Sports";
-import Science from "./science";
-import Socialmedia from "./Socialmedia";
-import Tradition from "./Tradition";
-import Home from "./Home";
-import Quiz from "./Quiz";
+import RecipeDetail from "./RecipeDetails";
+import Spaghetti, { FruitSalad, HotDog, WhiteSaucePasta } from "./DefaultFoodRecipes";
+import FoodRecipeApp from "./FoodRecipeApp";
 
-const App = () => {
+const App = () => { 
   return (
       <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/quiz" element={<Quiz/>} />
-        <Route path="/science" element={<Science/>} />
-        <Route path="/history" element={<History/>} />
-        <Route path="/sport" element={<Sports/>} />
-        <Route path="/bollywood" element={<Bollywood/>} />
-        <Route path="/social" element={<Socialmedia/>} />
-        <Route path="/tradition" element={<Tradition/>} />
-        <Route path="/api" element={<Api/>} />
+        <Route path="/" element={<FoodRecipeApp/>}/>
+        <Route path="/spagethi" element={<Spaghetti/>}/>
+        <Route path="/hotdog" element={<HotDog/>}/>
+        <Route path="/pasta" element={<WhiteSaucePasta/>}/>
+        <Route path="/fruitsalad" element={<FruitSalad/>}/>
+        <Route path="/recipe/:id" element={<RecipeDetail/>} />
       </Routes>
   );
 };
