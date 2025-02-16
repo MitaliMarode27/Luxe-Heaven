@@ -1,0 +1,123 @@
+.luxuryCaption{
+    background: transparent;
+    backdrop-filter: blur(20px);
+}
+
+.WholeProcess{
+    height: 70vh; 
+}
+.ProcessBox{
+    text-align: center;
+    height: 100px;
+    width: 600px;
+}
+
+@media (max-width: 480px) {
+    .headerDiv{
+        display: block;
+    }
+
+    .luxuryCaption{
+        position: absolute;
+        top: 15%;
+        height: fit-content !important;
+        width: 100% !important;
+    }
+
+    .secondDiv{
+        display: block;
+    }
+
+    .luxuryCaption2{
+        height: fit-content !important;
+        width: 100% !important;
+        font-size: 1rem;
+    }
+
+    .WholeProcess{
+        height: fit-content !important;
+    }
+
+    .mirrorimg{
+        width: 90% !important;
+    }
+    .processMaindiv {
+        display: block;
+    }
+
+    .ProcessBox{
+        height: fit-content !important;
+        width: 100% !important;
+        font-size: 1rem;
+    }
+
+    .designMainDiv{
+        height: 150rem !important;
+        width: 100% !important;
+    }
+
+    .designImgs{
+        position: absolute;
+        right: 10%;
+    }
+
+    .designInfo{
+        margin-right: 3rem;
+    }
+
+}
+
+
+@media (max-width: 1024px) and (min-width: 500px) {
+    .headerDiv{
+        display: block;
+    }
+
+    .luxuryCaption{
+        position: absolute;
+        top: 15%;
+        height: fit-content !important;
+        width: 100% !important;
+    }
+
+    .secondDiv{
+        display: block;
+    }
+
+    .luxuryCaption2{
+        height: fit-content !important;
+        width: 100% !important;
+        font-size: 1rem;
+    }
+
+    .WholeProcess{
+        height: fit-content !important;
+    }
+
+    .mirrorimg{
+        width: 90% !important;
+    }
+
+    .processMaindiv {
+        display: block;
+    }
+
+    .ProcessBox{
+        height: fit-content !important;
+        width: 100% !important;
+        font-size: 1rem;
+    }
+
+    .designMainDiv{
+        height: fit-content !important;
+        width: 100% !important;
+    }
+
+    .designImgs{
+        width: 100% !important;
+        height: fit-content !important;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+}

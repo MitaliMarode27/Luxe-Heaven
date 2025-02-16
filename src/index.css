@@ -2,160 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-  margin: 0;
-  padding: 0;
+.hero-section {
+  background-image: url('path/to/your/hero-image.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
-/* General styles */
-body {
-  font-family: 'Times New Roman', Times, serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
-}
-
-.mainDiv {
-  padding: 20px;
-}
-.topicName{
-  font-family: 'Times New Roman', Times, serif ;
-}
-
-.link{
-  transition: all 1s ease-in;
-}
-#maindivId1{
-  background-image: url(./ProjectImages/historyMainImg.webp);
-  height: 130vh;
-  background-size: cover;  
-}
-
-  #maindivId2{
-    background-image: url(./ProjectImages/bollywoodMainImg.jpg);
-    height: 130vh;
-     background-size: cover;  
-  }
-  #maindivId3{
-   background-image: url(./ProjectImages/sportMainImg.jpg) ;
-   height: 130vh;
-   background-size: cover;
-  }
-
-  #maindivId4{
-    background-image: url(./ProjectImages/scienceMainImg.avif);
-    height: 140vh;
-    background-size: cover;
-   }
-
-   #maindivId5{
-    background-image: url(./ProjectImages/socialmediaMainImg.avif);
-    height: 140vh;
-    background-size: cover;
-   }
-
-   #maindivId6{
-    background-image: url(./ProjectImages/traditionMainImg.avif);
-    height: 140vh;
-    background-size: cover;
-   }
-
- 
-.container {
-  max-width: 800px;
-  width: 100%;
-  padding: 0 15px;
-  text-align: center;
-  position: relative;
-  top: 0;
-}
-
-.question-box {
+.card {
   margin-bottom: 20px;
-  padding: 10px;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 2px 2px 4px rgb(44, 44, 44);
 }
 
-.question {
-  cursor: pointer;
-  padding: 10px;
-  background-color: #f1f1f1;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
- 
-}
-
-.question button {
-  margin-right: 10px;
-  font-size: 1rem;
-}
-
-.answer {
-  padding: 10px;
-  background-color: #e9e9e9;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-top: 10px;
-  font-size: 2rem;
-  text-align: center;
-  column-gap: 2rem;
-}
-
-.answer img {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 10px;
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
-  .container {
-    max-width: 100%;
-  }
-
-  .question {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .maindiv {
-    padding: 10px;
-    height: 180vh;
-  }
-
-
-  .question button {
-    margin-bottom: 10px;
-  }
-}
-
-@media (max-width: 480px) {
-  .maindiv {
-    padding: 10px;
-    height: 180vh;
-  }
-
-  .question {
-    padding: 8px;
-  }
-
-  .answer {
-    padding: 8px;
-  }
-}
-
-
-.listImg{
-  height: 25vh;
-  width: 30%;
+.card img {
+  height: 200px;
   object-fit: cover;
-}
-
-.eye{
-  color: black;
- width: 3rem;
 }

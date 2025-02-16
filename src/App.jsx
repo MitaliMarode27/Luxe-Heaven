@@ -1,19 +1,27 @@
 import {Route, Routes } from "react-router-dom";
 import "./App.css";
-import RecipeDetail from "./RecipeDetails";
-import Spaghetti, { FruitSalad, HotDog, WhiteSaucePasta } from "./DefaultFoodRecipes";
-import FoodRecipeApp from "./FoodRecipeApp";
+import "./index.css"
+import Contact from './Contact';
+import Home from "./Home";
+import ModularInterior from "./ModularInterior";
+import Navbar from "./Navbar";
+import FullHomeInterior from "./FullHomeInterior";
+import LuxuryInterior from "./LuxuryInterior";
+import HowItWorks from "./HowItWorks";
+import About from "./About";
 
 const App = () => { 
   return (
       <Routes>
-        <Route path="/" element={<FoodRecipeApp/>}/>
-        <Route path="/spagethi" element={<Spaghetti/>}/>
-        <Route path="/hotdog" element={<HotDog/>}/>
-        <Route path="/pasta" element={<WhiteSaucePasta/>}/>
-        <Route path="/fruitsalad" element={<FruitSalad/>}/>
-        <Route path="/recipe/:id" element={<RecipeDetail/>} />
-      </Routes>
+        <Route path="/" element={<Home/>} />
+        <Route path="/navbar" element={<Navbar/>} />
+        <Route path="/modular" element={<ModularInterior/>} />
+        <Route path="/fullhome" element={<FullHomeInterior/>} />
+        <Route path="/luxury" element={<LuxuryInterior/>} />
+        <Route path="/howitworks" element={<HowItWorks/>} />
+        <Route path="/about" element={<About/>} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>  
   );
 };
 
