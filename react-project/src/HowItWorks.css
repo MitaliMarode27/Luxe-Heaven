@@ -1,0 +1,78 @@
+.MainHeading{
+    position: absolute;
+    top: 35%;
+    left: 37%;
+    background: transparent;
+    backdrop-filter: blur(20px);
+}
+
+.HowItWorksImgs{
+   height: 400px;
+   width: 600px;
+}
+
+.meetingBox{
+    column-gap: 5rem;
+}
+
+@media (max-width: 480px) {
+    .HowItWorksMainImg{
+        width: 100% !important;
+    }
+
+    .MainHeading{
+        position: absolute;
+        top: 30%;
+        left: 1%;
+        text-align: center;
+        width: 100%;
+    }
+
+    .meetingBox{
+        display: block;
+        width: 100%;
+        height: 55rem !important;
+    }
+
+    .placeorderDiv{
+        width: 100% !important;
+    }
+
+    .StepBox{
+        width: 100% !important;
+    }
+    .Fivesteps{
+       display: flex;
+       flex-wrap: wrap;
+    }
+
+}
+
+@media (max-width: 1024px) and (min-width: 500px) {
+    .HowItWorksMainImg{
+        width: 100% !important;
+    }
+
+    .MainHeading{
+        position: absolute;
+        top: 20%;
+        left: 1%;
+        text-align: center;
+        width: 100%;
+        padding: 2rem;
+    }
+
+    .meetingBox{
+        display: block;
+        width: 100%;
+        height: fit-content !important;
+    }
+
+    .placeorderDiv{
+        width: 100% !important;
+    }
+
+    .HowItWorksImgs{
+        width: 100% !important;
+    }
+}

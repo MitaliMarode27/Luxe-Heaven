@@ -1,0 +1,61 @@
+@media (max-width: 480px) {
+    .howitstarted{
+        width: 100% !important;
+        height: 45rem !important;
+        margin-bottom: 2rem;
+    }
+
+    .para{
+        font-size: 1rem;
+    }
+
+    .journey{
+        width: 100% !important;
+    }
+
+    .Achivements{
+        display: flex;
+        flex-wrap: wrap;
+        width: 100% !important;
+    }
+
+    .OurTeam{
+        display: block;
+        width: 100% !important;
+        height: fit-content !important;
+        row-gap: 2rem;
+        padding-bottom: 3rem;
+    }
+
+    .teamCaption{
+        width: 100% !important;
+        font-size: 1rem;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .teamImg{
+        width: 100% !important;
+    }
+}
+
+
+@media (max-width: 1024px) and (min-width: 500px) {
+    .Achivements{
+        display: flex;
+        flex-wrap: wrap;
+        width: 100% !important;
+    }
+
+    .OurTeam{
+        width: 100% !important;
+        height: fit-content !important;
+        padding-bottom: 3rem;
+    }
+
+    .teamCaption{
+        width: fit-content !important;
+        margin-bottom: 6rem;
+    }
+
+}

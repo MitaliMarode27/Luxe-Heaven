@@ -1,0 +1,158 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+
+
+.MainCaption{
+    position: absolute;
+    top: 35%;
+    left: 18%;
+    padding: 2rem;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    text-align: center;
+}
+
+
+
+@media (max-width: 480px) {
+   
+    .modularMainImg{
+        width: 90vw !important;
+    }
+
+    .MainCaption{
+        position: absolute;
+        top: 25%;
+        right: 15%;
+     }
+
+     .TeamMainBox{
+     display: block;   
+     height: fit-content !important;
+     }
+
+     .TeamInfo{
+      width: 100vw !important;
+      position: relative !important;
+      right: 70% !important;
+      height: fit-content !important;
+     }
+
+     .profile{
+        display: block;
+        align-items: center;
+        height: fit-content;
+        width: auto;
+     }
+
+
+    .TeamContainerwrapper{
+      text-align: left;
+      height: fit-content !important;
+    }
+
+    .profile-details {
+      margin-left: 1rem;
+    }
+
+    .lastDivCaption{
+       margin-bottom: 2rem;
+    }
+
+}
+
+@media (max-width: 1024px) and (min-width: 500px) {
+    .modularMainImg{
+        width: 90vw !important;
+    }
+
+    .MainCaption{
+        position: absolute;
+        top: 15%;
+        right: 15%;
+     }
+
+     .TeamMainBox{
+        display: block;
+        row-gap: 2rem;
+     }
+
+     .TeamInfo{
+       width: 95vw !important;
+       position: relative !important;
+       right: 20% !important;
+       font-size: 1rem !important;
+       height: fit-content !important;
+       line-height: 1rem !important;
+       padding: 1rem !important;
+     }
+
+     .info {
+      line-height: 10px;
+      position: relative;
+      top: 50% !important;
+      right: 20% !important;
+      width: 70%;
+     }
+
+     .TeamContainerwrapper{
+        width: 100vw;
+        height: fit-content;
+     }
+     
+     .offerCards{
+        display: flex;
+        flex-wrap: wrap;
+     }
+
+     .profile{
+        display: block;
+        align-items: center;
+        height: fit-content;
+        width: 90vw;
+     }
+
+     .lastDiv{
+      display: block;
+      align-items: center;
+      height: fit-content;
+      width: 100%;
+     }
+
+     .lastDivCaption{
+      position: relative;
+      right: 10% ;
+      width: 120% !important;
+     }
+
+     .lastDivImg{
+      width: fit-content;
+      height: 300px;
+     }
+
+
+
+     .TeamImg{
+      width: 70% !important;
+      text-align: center;
+     }
+
+     .TeamMainBox {
+      flex-direction: row;
+      justify-content: center;
+      gap: 7rem;
+    }
+  
+    .profile {
+      flex-direction: row;
+      justify-content: center;
+      gap: 2rem;
+    }
+  
+    .profile-details {
+      margin-left: 1rem;
+    }
+}
+
