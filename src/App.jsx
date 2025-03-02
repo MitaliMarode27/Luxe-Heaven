@@ -1,7 +1,8 @@
 import {Route, Routes } from "react-router-dom";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../node_modules/bootstrap/dist/js/bootstrap.bundle";
 import "./App.css";
 import "./index.css"
-import Contact from './Contact';
 import Home from "./Home";
 import ModularInterior from "./ModularInterior";
 import Navbar from "./Navbar";
@@ -9,6 +10,7 @@ import FullHomeInterior from "./FullHomeInterior";
 import LuxuryInterior from "./LuxuryInterior";
 import HowItWorks from "./HowItWorks";
 import About from "./About";
+import Contact from "./Contact";
 
 const App = () => { 
   return (
@@ -20,7 +22,7 @@ const App = () => {
         <Route path="/luxury" element={<LuxuryInterior/>} />
         <Route path="/howitworks" element={<HowItWorks/>} />
         <Route path="/about" element={<About/>} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/contact" element={<Contact/>} />
       </Routes>  
   );
 };

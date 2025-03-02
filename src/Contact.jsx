@@ -1,3 +1,6 @@
+import "./Contact.css";
+
+
 import { useState } from "react";
 import Navbar from "./Navbar";
 import mainImg from "./ProjectImages/ContactPageMainImg.jpg";
