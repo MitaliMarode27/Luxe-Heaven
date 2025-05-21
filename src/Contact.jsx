@@ -1,12 +1,9 @@
 import "./Contact.css";
-
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import mainImg from "./ProjectImages/ContactPageMainImg.jpg";
-import { Done } from "@material-ui/icons";
+import { Done, Menu } from "@material-ui/icons";
 import "./Contact.css";
-
 
 const Contact = () => {
 
@@ -14,11 +11,33 @@ const Contact = () => {
     name:"",
     email:"",
     phone:"",
+    password:"",
     propertyname:""
 })
 const [showMsg,setShowMsg] = useState(false);
+const [info,setinfo] = useState([]);
+const [showinfo, setShowinfo] = useState(false);
 
+const getInfo = async () => {
+  try{
+    const response = await fetch(`http://localhost:3000/contact/fetch`) ;
+    if(response.ok) {
+      const data = await response.json();
+      setinfo(data.database || []);
+    }
+    else{
+      setinfo([]);
+    }
+  }
+  catch(error){
+    console.error("Error fetching stored URLs:", error);
+    setinfo([])
+  }
+}
 
+useEffect(() => {
+  getInfo();
+},[]);
 
 const inputEvt = (evt) => {
  const { name, value } = evt.target;
@@ -29,12 +48,35 @@ const inputEvt = (evt) => {
 }
 
 
-const handleSubmit = (evt) => {
- evt.preventDefault();
- setShowMsg(true); 
+const handleSubmit = async (evt) => {
+  evt.preventDefault(); // Prevent the default form submission behavior
 
+  const formattedUserDetails = {
+    ...userDetails,
+    phone: Number(userDetails.phone),
+  };
+  
+  try {
+    const response = await fetch("http://localhost:3000/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formattedUserDetails), // Send the form data as JSON
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+      console.log(result.message); // Log the success message from the backend
+      setShowMsg(true); // Show the success message on the frontend
+      getInfo()
+    } else {
+      console.error("Failed to submit the form");
+    }
+  } catch (error) {
+    console.error("Error submitting the form:", error);
+  }
 };
-
 
 
   return (
@@ -44,7 +86,35 @@ const handleSubmit = (evt) => {
 
 
     <div style={{height:"80vh", width:"50%"}} className="userInputBox rounded-lg shadow-lg text-center bg-cyan-800">
-    <form className="contact-form" onSubmit={handleSubmit}>
+      <button onClick={() => {setShowinfo(!showinfo)}}  className="btn btn-light me-0"><Menu/></button>
+
+      {
+        showinfo && (
+          <div className=" bg-slate-100 p-4">
+<h1>User Info</h1>
+{info.length === 0 ? (<p>No User Information Available</p>) : 
+(
+ <div >
+<ul>
+{Array.isArray(info) && info.map((item, idx) => (
+  <div key={idx} className="p-8 shadow-lg mt-3" style={{ width: "400px" }}>
+    <li>Name: {item.fname}</li>
+    <li>Email: {item.email}</li>
+    <li>Phone No: {item.phone}</li>
+    <li>Password: {item.password}</li>
+    <li>Property Name: {item.propertyName}</li>
+  </div>
+))} </ul>
+ </div>
+
+)
+} 
+</div>
+
+        )
+      }
+      
+    <form className="contact-form" onSubmit={handleSubmit} action="/contact" method="post">
    <h1 className=" text-4xl mt-4 text-cyan-200">Talk With Designer</h1>
     <input className="contactBoxInputs w-96 h-14 text-lg mt-5 pl-3 rounded-md" required type="text" value={userDetails.name} id="name" name="name"  onChange={inputEvt} placeholder="Your Name...."/>
     <input className="contactBoxInputs w-96 h-14 text-lg mt-3 pl-3 rounded-md" required type="email" value={userDetails.email} id="email" name="email"  onChange={inputEvt} placeholder="Email ID...."/>
@@ -74,6 +144,8 @@ const handleSubmit = (evt) => {
           <button onClick={() => {setShowMsg(false)}} className="btn btn-outline-success mt-3  py-2 px-4">OK</button>
         </div>
       )}
+
+
 
     <footer className="footer bg-slate-800 text-white py-4">
       <div className="container mx-auto text-center">

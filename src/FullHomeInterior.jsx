@@ -1,5 +1,5 @@
+import "./fullhomeinterior.css";
 import Navbar from './Navbar';
-import "./FullHomeInteriors.css"
 import { NavLink } from 'react-router-dom';
 import mainImg from "./ProjectImages/fullInteriorMainImg.jpg";
 import offerImg1 from "./ProjectImages/fullInteriorOfferImg1.jpg";

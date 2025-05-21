@@ -5,7 +5,7 @@ import bedroomImg from "./ProjectImages/luxurybedroomimg.jpg";
 import dressingImg from "./ProjectImages/luxuryimg5.jpg";
 import bathroomImg from "./ProjectImages/luxurybathroomimg.jpg";
 import GardenVideo from './ProjectImages/gardenVideo.mp4';
-import "./LuxuryInterior.css";
+import "./luxuryinterior.css";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { Done } from "@material-ui/icons";

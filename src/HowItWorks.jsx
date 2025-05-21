@@ -4,7 +4,7 @@ import Booking from "./ProjectImages/howitworksBookImg.avif";
 import Deal from "./ProjectImages/howitworksDealimg.jpg";
 import finalInstallation from "./ProjectImages/howitworksFinalInstallationImg.png";
 import Ready from "./ProjectImages/howitworksChillImg.jpg";
-import "./HowItWorks.css";
+import "./Howitworks.css";
 import Navbar from "./Navbar";
 import { Category, Done, VerifiedUser } from "@material-ui/icons";
 import { useState } from "react";

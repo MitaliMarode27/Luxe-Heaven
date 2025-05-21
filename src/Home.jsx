@@ -44,7 +44,6 @@ const Home = () => {
   const handleSubmit = (evt) => {
    evt.preventDefault();
    setShowMsg(true); 
-  
   };
 
 
@@ -57,7 +56,7 @@ const Home = () => {
     <>
     <div className='WholeContent'>
 
-    <nav className="navbar bg-black bg-opacity-50 fixed w-full z-10 top-0">
+  <nav className="navbar bg-black bg-opacity-50 fixed w-full z-10 top-0">
           <div className="container mx-auto flex justify-between items-center p-4">
             <NavLink className="navbar-brand text-3xl font-thin mb-5 text-white" to="/"><Category style={{ fontSize: "3rem" }} />LuxeHaven</NavLink>
             <div className={`navbar-menu ${menuActive ? 'block' : 'hidden'} lg:flex lg:items-center lg:space-x-4`}>
