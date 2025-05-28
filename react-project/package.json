@@ -8,12 +8,21 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "start": "vite"
+    "start": "vite",
+    "start2": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && node server.js",
+    "client": "cd src && vite"
   },
   "dependencies": {
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/icons": "^4.11.3",
+    "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.6.0",
+    "react-toastify": "^11.0.5",
+    "zod": "^3.24.4"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
