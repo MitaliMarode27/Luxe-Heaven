@@ -1,17 +1,5 @@
-Food Recipe App 🍳🍲
-A modern and user-friendly app for discovering, creating, and sharing delicious recipes!
+Interior Design Website
 
-This app is designed for food enthusiasts, chefs, and home cooks alike. With an intuitive interface and powerful features, users can explore a variety of recipes, save their favorites, and contribute their own culinary creations.
+This repository contains the source code for a modern Interior Design Website, showcasing elegant designs, services, and portfolios for an interior design business. The website is built using HTML, CSS, Reactjs, Nodejs, Exprssjs, MongoDb and Bootstrap for a responsive and visually appealing user experience.
 
-Features ✨
-Browse Recipes: Explore a vast collection of recipes categorized by cuisine, dietary preferences, ingredients, and more.
-Search Functionality: Find recipes quickly using Names.
-Recipe Details: Get step-by-step instructions, preparation time, cooking time, and a list of required ingredients.
-Create and Share Recipes: Add your own recipes with images, descriptions, and cooking tips.
-Cross-Platform: Available on both mobile and web platforms for seamless access.
-Tech Stack 💻
-Frontend: Html, Css, React.js.
-FrameWork: Bootsrap, Tailwind
-APIs: Integration with external recipe APIs.
-
-Happy cooking! 👨‍🍳👩‍🍳
+Features: Home, Services, Portfolio, About Us, and Contact pages Fully responsive design using Bootstrap Smooth animations and interactive UI Gallery section to showcase design projects Contact form for client inquiries Technologies Used: Frontend: HTML, CSS, JavaScript, Bootstrap, Reactjs,Nodejs, Exprssjs, MongoDb Tailwind Tools: VS Code
