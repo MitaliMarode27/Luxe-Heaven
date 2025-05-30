@@ -1,10 +1,11 @@
-import { useState } from "react";
-import img from "./ProjectImages/AboutpageImg1.jpg";
+import { useEffect, useState } from "react";
+import img from "./ProjectImages/loginPageImg.png";
 import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
 import { loginSchema } from "../../shared/validation.mjs";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+import { useContext } from "react";
+import { UserContext } from "../UserContext"; 
 
 const Login = () => {
     const [userInfo, SetUserInfo] = useState({
@@ -14,6 +15,7 @@ const Login = () => {
 
     const [error, setError] = useState("");
     const navigate = useNavigate();
+     const { setToken } = useContext(UserContext); 
   
     const inputEvt = (evt) => {
       const { name, value } = evt.target;
@@ -32,7 +34,6 @@ const Login = () => {
        }
      }
 
-
      const submit = async (evt) => {
        evt.preventDefault();
   
@@ -42,12 +43,11 @@ const Login = () => {
       toast.error(
         validationError.errors
           ? validationError.errors[0].message
-          : "Validation failed"
+          : "Validation failed",{autoClose : 2000, toastId:'login-success', closeOnClick: true}
       );
       return;
     }
        
-
        try{
         const response = await fetch(`http://localhost:5000/login`,{
           method:"POST",
@@ -62,13 +62,16 @@ const Login = () => {
       
   if(response.ok){
     const result = await response.json();
-    alert(result.message);
+    toast.success("Logged in successfully");
     localStorage.setItem("token", result.token);
-    navigate("/");
+    setToken(result.token); // Set the token in context
     SetUserInfo({
       email :"",
       password :""
     });
+setTimeout(() => {
+    navigate("/");
+  }, 1000);
   }
   else{
     alert("Invalid credential. Please try again");
@@ -94,21 +97,24 @@ const Login = () => {
         <Navbar/>
         <div
         className="d-flex align-items-center justify-center"
-        style={{ height: "80vh", width: "100%", columnGap: "1rem" }}
+        style={{ height: "100vh", width: "100%", columnGap: "1rem" }}
       >
+
+<div className="d-flex align-items-center justify-center  py-5 shadow-lg mt-5"
+          >
         <div>
           <img
-            style={{ height: "500px", width: "500px" }}
+            style={{ height: "500px", width: "600px" }}
             src={img}
             alt="Login Illustration"
           />
         </div>
 
         <div
-          className="bg-slate-400 p-4 px-5"
+          className=" p-4 px-5"
           style={{ height: "70%", width: "40%" }}
         >
-          <h1 className="text-4xl text-center text-white">Login Form</h1>
+          <h1 className="text-4xl mb-4 text-center text-slate-500">Login</h1>
 
           <form onSubmit={submit}>
             <label className="text-2xl m-1">Email</label>
@@ -116,8 +122,9 @@ const Login = () => {
               type="email"
               onChange={inputEvt}
               value={userInfo.email}
+              style={{border:"1px solid gray"}}
               name="email"
-              className="w-full h-14 m-2 pl-3"
+              className="w-full h-14 m-2 pl-3 border-slate-400"
               required
               placeholder="Enter Your Email.."
               autoComplete="username"
@@ -128,8 +135,9 @@ const Login = () => {
               type="password"
               onChange={inputEvt}
               value={userInfo.password}
+              style={{border:"1px solid gray"}}
               name="password"
-              className="w-full h-14 m-2 pl-3"
+              className="w-full h-14 m-2 pl-3  border-slate-400"
               required
               placeholder="Enter Your Password.."
               autoComplete="current-password"
@@ -143,20 +151,11 @@ const Login = () => {
            {error && (
             <div className=" ml-6 text-xl text-center p-2 bg-gray-200" style={{ color: "red",  marginBottom: "10px" }}>{error}</div>
           )}
-      <ToastContainer/>
+        </div>
         </div>
       </div>
 
-  <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.1198023128563!2d79.16484087471758!3d21.14763008368622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c73c54962fcb%3A0xbadbe0c4c7f02dd2!2sPardi%20police%20station!5e0!3m2!1sen!2sin!4v1745736289040!5m2!1sen!2sin"
-      width="1500"
-      height="400"
-      style={{ border: 0 }}
-      allowFullScreen=""
-      loading="lazy"
-      referrerPolicy="no-referrer-when-downgrade"
-      ></iframe>
-      <br />
+
       <p className=" h-16 bg-slate-400 text-center text-3xl pt-3">@Thanks for Visiting 💗</p>
     </>
 

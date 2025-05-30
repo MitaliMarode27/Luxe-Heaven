@@ -25,42 +25,62 @@ const Service = () => {
   }, []);
 
   const images = [
-  "https://img.freepik.com/premium-photo/web-development-coding-programming-internet-technology-business-concept_628331-833.jpg?semt=ais_hybrid&w=740",
-  "https://www.netleafinfosoft.com/our-blog/wp-content/uploads/2019/04/Graphic-_Design.jpg",
-  "https://www.springboard.com/blog/wp-content/uploads/2022/06/why-is-digital-marketing-so-important-to-businesses.jpg",
-  "https://www.developeronrent.com/blogs/wp-content/uploads/2019/09/python-for-web-development.jpg",
-  "https://www.naukri.com/campus/career-guidance/wp-content/uploads/2023/11/what-is-data-science.jpg",
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR61DqwdWoklnEu9UNSeaK56__Dw852zWdjdA&s"
+  "https://www.morgantewilson.com/uploads/_blogHero/NorthshoreMediterranean11023_UHR.jpg",
+  "https://www.swamiinterior.in/wp-content/uploads/2022/08/commercial-interior-designers-in-mumbai-swami-interior.webp",
+  "https://media.designcafe.com/wp-content/uploads/2022/08/18154955/interior-design-cost-in-mumbai.jpg",
+  "https://archicgi.com/wp-content/uploads/2021/04/3d-architectural-visualization-projects-7-questions-view01.jpg",
+  "https://www.pakitchen.com/wp-content/uploads/2024/03/Feature-Home-renovation-project-feature-image.jpg",
+  "https://nomvo.com/wp-content/uploads/2016/06/example-of-example-seo-consultation-servics.jpg",
+
 ];
 
 console.log(info);
-
   return (
     <>
       <Navbar />
-<h1 className="text-center text-3xl my-5">Services</h1>
+<h1 className="text-center text-4xl py-5 mt-5 pt-8 text-neutral-500">Elegant & Professional</h1>
+<hr className=' w-80 mx-auto mb-5' />
 
-<div className="container">
-  <div className="row justify-content-center">
+<div className="p-4">
+  <h3 className=" text-center text-3xl mb-2 text-neutral-400">"Crafting Beautiful Spaces That Reflect Your Style"</h3>
+  <p className=" text-center text-2xl mb-4 text-neutral-300">Discover our range of interior design services tailored to bring your dream spaces to life with precision, creativity, and care.</p>
+</div>
+
     {info.map((val, idx) => (
     
-      <div className="col-md-4 d-flex justify-content-around mb-4" key={idx}>
-        <div className="card shadow-lg" style={{ width: "18rem" }}>
-          <img
+      <div className="col-md-12 d-flex justify-center  mb-4" key={idx}>
+<div className="card mb-14 transform transition duration-500 hover:scale-105 hover:opacity-55 shadow-md" style={{width:"70%", height:"50%", backgroundSize: "cover"}}>
+ <img
             src={images[idx]|| "https://via.placeholder.com/150"}
             className="card-img-top"
             alt={val.service || "Service Image"}
-          />
-          <div className="card-body">
-            <h3 className="card-title text-2xl text-center text-black">{val.services}</h3>
-            <p className="card-text">{val.description}</p>
-            <p className="text-slate-500 mt-2">{val.price}</p>
+           
+          />   <div className="card-body">
+            <h3 className="card-title text-2xl  text-black">{val.services}</h3>
+            <p className="card-text text-neutral-400">{val.description}</p>
+            <p className="text-slate-500 mt-2 ">{val.price}</p>
           </div>
-        </div>
+</div>
       </div>
     ))}
-  </div>
-</div>
+
+        <footer className="footer bg-slate-800 text-white py-4">
+      <div className="container mx-auto text-center">
+        <p className="mb-2">&copy; 2025 LuxeHaven. All rights reserved.</p>
+        <div className="social-icons">
+          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="text-white mx-2">
+            <i className="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" className="text-white mx-2">
+            <i className="fab fa-twitter"></i>
+          </a>
+          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="text-white mx-2">
+            <i className="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+
     </>
   );
 };

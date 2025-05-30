@@ -1,10 +1,9 @@
 import { useState } from "react";
-import img from "../react-project/src/ProjectImages/AboutpageImg1.jpg";
+import img from "./src/ProjectImages/loginPageImg.png";
 import Navbar from "./src/Navbar";
 import { signupSchema } from "../shared/validation.mjs";
 import { MenuBook } from "@material-ui/icons";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 
 const Signup = () => {
@@ -61,7 +60,7 @@ const Signup = () => {
       toast.error(
         validationError.errors
           ? validationError.errors[0].message
-          : "Validation failed"
+          : "Validation failed",{autoClose : 2000,toastId:'signup-success', closeOnClick: true}
       );
       return;
     }
@@ -101,9 +100,10 @@ const Signup = () => {
   return (
     <>
       <Navbar />
-      <div className="d-flex align-items-center justify-center" style={{ height: "80vh", width: "100%", columnGap: "1rem" }}>
+      <div className="d-flex align-items-center justify-center" style={{ height: "100vh", width: "100%", columnGap: "1rem" }}>
+       <div className="d-flex align-items-center justify-center py-5 shadow-xl mt-5">
         <div>
-          <img style={{ height: "500px", width: "500px" }} src={img} alt="" />
+          <img style={{ height: "500px", width: "600px" }} src={img} alt="" />
         </div>
 
         {displaymsg && (
@@ -126,42 +126,32 @@ const Signup = () => {
           </div>
         )}
 
-        <div className="bg-slate-400 p-4 px-5" style={{ height: "100%", width: "40%" }}>
+        <div className=" p-4 px-5" style={{ height: "100%", width: "40%" }}>
           <button type="button" onClick={showDetails}><MenuBook />History</button>
-          <h1 className="text-4xl text-center text-white">Registration Form</h1>
+          <h1 className="text-4xl text-center text-slate-500">Signup </h1>
           <form onSubmit={submit}>
             <label className="text-2xl m-1">Name</label>
-            <input type="text" onChange={inputEvt} value={userInfo.name} name="name" className="w-full m-2 h-13 pl-3" required placeholder="Enter Your Name.." />
+            <input style={{border:"1px solid gray"}} type="text" onChange={inputEvt} value={userInfo.name} name="name" className="w-full m-2 h-13 py-2 pl-3" required placeholder="Enter Your Name.." />
 
             <label className="text-2xl m-1">Email</label>
-            <input type="email" onChange={inputEvt} value={userInfo.email} name="email" className="w-full h-13 m-2 pl-3" required placeholder="Enter Your Email.." />
+            <input style={{border:"1px solid gray"}} type="email" onChange={inputEvt} value={userInfo.email} name="email" className="w-full h-13 m-2 py-2 pl-3" required placeholder="Enter Your Email.." />
 
             <label className="text-2xl m-1">Phone</label>
-            <input type="number" onChange={inputEvt} value={userInfo.phone} name="phone" className="w-full h-13 m-2 pl-3" required placeholder="Enter Your Phone.." />
+            <input style={{border:"1px solid gray"}} type="number" onChange={inputEvt} value={userInfo.phone} name="phone" className="w-full h-13 m-2 py-2 pl-3" required placeholder="Enter Your Phone.." />
 
             <label className="text-2xl m-1">Password</label>
-            <input type="password" onChange={inputEvt} value={userInfo.password} name="password" autoComplete="current-password" className="w-full h-13 m-2 pl-3" required placeholder="Enter Your Password.." />
+            <input style={{border:"1px solid gray"}} type="password" onChange={inputEvt} value={userInfo.password} name="password" autoComplete="current-password" className="w-full h-13 m-2 pl-3 py-2" required placeholder="Enter Your Password.." />
 
-            <button className="btn btn-secondary mt-4 py-2 px-4">Register Now</button>
+            <button className="btn btn-secondary mt-4 py-2 px-4">Signup</button>
           </form>
                      {error && (
             <div className=" ml-6 text-xl mt-2 text-center p-2 bg-gray-200" style={{ color: "red",  marginBottom: "10px" }}>{error}</div>
           )}
-      <ToastContainer/>
 
         </div>
+              </div>
       </div>
 
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.1198023128563!2d79.16484087471758!3d21.14763008368622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4c73c54962fcb%3A0xbadbe0c4c7f02dd2!2sPardi%20police%20station!5e0!3m2!1sen!2sin!4v1745736289040!5m2!1sen!2sin"
-        width="1500"
-        height="400"
-        style={{ border: 0 }}
-        allowFullScreen=""
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-      ></iframe>
-      <br />
       <p className="h-16 bg-slate-400 text-center text-3xl pt-3">@Thanks for Visiting 💗</p>
     </>
   );

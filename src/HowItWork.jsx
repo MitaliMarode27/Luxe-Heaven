@@ -4,19 +4,19 @@ import Booking from "./ProjectImages/howitworksBookImg.avif";
 import Deal from "./ProjectImages/howitworksDealimg.jpg";
 import finalInstallation from "./ProjectImages/howitworksFinalInstallationImg.png";
 import Ready from "./ProjectImages/howitworksChillImg.jpg";
-import "./Howitworks.css";
+import "./HowitWork.css";
 import Navbar from "./Navbar";
 import { Category, Done, VerifiedUser } from "@material-ui/icons";
 import { useState } from "react";
+import { Navigate } from "react-router-dom";
 
 
-const HowItWorks = () => {
+const HowItWork = () => {
 
     const [userDetails,setUserDetails] = useState({
       name:"",
       email:"",
-      phone:"",
-      propertyname:""
+      message:""
   })
   const [showMsg,setShowMsg] = useState(false);
   
@@ -31,11 +31,53 @@ const HowItWorks = () => {
   }
   
   
-  const handleSubmit = (evt) => {
-   evt.preventDefault();
-   setShowMsg(true); 
-  
-  };
+         const handleSubmit = async (evt) => {
+           evt.preventDefault();  
+           setShowMsg(true);    
+           try{
+            const response = await fetch(`http://localhost:5000/contact`,{
+              method:"POST",
+              headers:{
+                'Content-Type' : 'application/json'
+              },
+              body: JSON.stringify({
+                name : userDetails.name,
+                email: userDetails.email, // Use userDetails.email
+                message : userDetails.message
+              }),
+           });
+           
+           
+      if(response.ok){
+        const result = await response.json();
+        alert(result.message);
+        localStorage.setItem("token", result.token);
+        Navigate("/");
+        setUserDetails({
+          name : "",
+          email : "",
+          message: ""
+        });
+      }
+      else{
+        alert("Invalid credential. Please try again");
+        setUserDetails({
+          name : "",
+          email : "",
+          message: ""
+        });
+      }
+      }
+       catch(error){
+        console.error("Error during login : ", error);
+        alert("Login failed. Please try login")
+        setUserDetails({
+          email :"",
+          password :""
+        });
+           }
+       }
+      
   
   return (
     <div>
@@ -83,7 +125,7 @@ const HowItWorks = () => {
         <h5 className="modal-title ml-3 mx-auto text-red-600 text-2xl">Submit Your Details</h5>
         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div className="modal-body">
+      <div className="modal-body" style={{height:"410px"}}>
       {showMsg ? (
                 <div className="formSubmittedMsg text-center mx-auto mr-16 bg-sky-600 shadow-lg pr-4">
                   <p className="text-sky-700 text-lg mb-2">{userDetails.name}! Your Form Has Been Submitted <Done/>.</p>
@@ -92,28 +134,23 @@ const HowItWorks = () => {
                 </div>
               ) : (
 
-                <form className="contact-form bg-zinc-200 text-center" onSubmit={handleSubmit}>
-    <input className="contactBoxInputs w-96 h-14 text-lg mt-5 pl-3 rounded-md" required type="text" value={userDetails.name} id="name" name="name"  onChange={inputEvt} placeholder="Your Name...."/>
-    <input className="contactBoxInputs w-96 h-14 text-lg mt-3 pl-3 rounded-md" required type="email" value={userDetails.email} id="email" name="email"  onChange={inputEvt} placeholder="Email ID...."/>
-    <input className="contactBoxInputs w-96 h-14 text-lg mt-3 pl-3 rounded-md" required type="phone" value={userDetails.phone} id="phone" name="phone"  onChange={inputEvt} placeholder="Phone Number...."/>
-
+                <form className="contact-form bg-zinc-200 text-center" style={{height:"380px"}} onSubmit={handleSubmit}>
+    <input className="contactBoxInputs w-96 h-14 text-lg mt-6 pl-3 rounded-md" required type="text" value={userDetails.name} id="name" name="name"  onChange={inputEvt} placeholder="Your UserName...."/>
+    <input className="contactBoxInputs w-96 h-14 text-lg mt-4 pl-3 rounded-md" required type="email" value={userDetails.email} id="email" name="email"  onChange={inputEvt} placeholder="Email ID...."/>
+ <textarea name="message" onChange={inputEvt}
+              value={userDetails.message}
+              className="w-96 h-14 mt-4 m-2 pl-3"
+              required placeholder="Your Message"> </textarea>
 
     <div class="form-check flex justify-center items-center my-2" style={{columnGap:"1rem"}}>
-  <input class="form-check-input contactBoxInputs mt-4 h-5 w-5 pl-3 rounded-md" type="checkbox" value="" id="flexCheckIndeterminate"/>
-  <label class="form-check-label text-zinc-500 text-xl mt-4" for="flexCheckIndeterminate">
+  <input class="form-check-input contactBoxInputs mt-2 h-5 w-5 pl-3 rounded-md" type="checkbox" value="" id="flexCheckIndeterminate"/>
+  <label class="form-check-label text-zinc-500 text-xl mt-2" for="flexCheckIndeterminate">
   Send me updates on WhatsApp
   </label>
 </div>
-     <input className="contactBoxInputs w-96 h-14 text-lg mt-3 pl-3 rounded-md" type="propertyname" id="propertyname" required name="propertyname" value={userDetails.propertyname}  onChange={inputEvt} placeholder="Property Name" />
-     <br />
-     <button className=" btn btn-outline-danger rounded-full mt-4 py-2 px-3 text-lg mb-3">Get Free Quote</button>
+     <button className=" btn btn-outline-danger rounded-full mt-4  px-3 text-lg ">Sumbit</button>
      </form>
                   )}
-
-              <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" className="btn btn-primary">Save changes</button>
-      </div>
     </div>
   </div>
   </div>
@@ -239,4 +276,4 @@ const HowItWorks = () => {
   );
 };
 
-export default HowItWorks;
+export default HowItWork;

@@ -19,6 +19,9 @@ import maleUser from "./ProjectImages/maleuser.jpg";
 import "./home.css";
 import { Category, Done } from '@material-ui/icons';
 import { useState } from 'react';
+import Navbar from './Navbar';
+import { Navigate } from "react-router-dom";
+
 
 const Home = () => {
   const [userDetails,setUserDetails] = useState({
@@ -41,10 +44,52 @@ const Home = () => {
   }
   
   
-  const handleSubmit = (evt) => {
-   evt.preventDefault();
-   setShowMsg(true); 
-  };
+         const handleSubmit = async (evt) => {
+           evt.preventDefault();  
+           setShowMsg(true);    
+           try{
+            const response = await fetch(`http://localhost:5000/contact`,{
+              method:"POST",
+              headers:{
+                'Content-Type' : 'application/json'
+              },
+              body: JSON.stringify({
+                name : userDetails.name,
+                email: userDetails.email, // Use userDetails.email
+                message : userDetails.message
+              }),
+           });
+           
+           
+      if(response.ok){
+        const result = await response.json();
+        alert(result.message);
+        localStorage.setItem("token", result.token);
+        navigate("/");
+        setUserDetails({
+          name : "",
+          email : "",
+          message: ""
+        });
+      }
+      else{
+        alert("Invalid credential. Please try again");
+        setUserDetails({
+          name : "",
+          email : "",
+          message: ""
+        });
+      }
+      }
+       catch(error){
+        console.error("Error during login : ", error);
+        alert("Login failed. Please try login")
+        setUserDetails({
+          email :"",
+          password :""
+        });
+           }
+       }
 
 
   const toggleMenu = () => {
@@ -56,24 +101,7 @@ const Home = () => {
     <>
     <div className='WholeContent'>
 
-  <nav className="navbar bg-black bg-opacity-50 fixed w-full z-10 top-0">
-          <div className="container mx-auto flex justify-between items-center p-4">
-            <NavLink className="navbar-brand text-3xl font-thin mb-5 text-white" to="/"><Category style={{ fontSize: "3rem" }} />LuxeHaven</NavLink>
-            <div className={`navbar-menu ${menuActive ? 'block' : 'hidden'} lg:flex lg:items-center lg:space-x-4`}>
-              <NavLink className="nav-link text-white" to="/" onClick={() => handleLinkClick('/')}>Home</NavLink>
-              <NavLink className="nav-link text-white" to="/howitworks"  onClick={() => handleLinkClick('/howitworks')}>HowItWorks</NavLink>
-              <NavLink className="nav-link text-white" to="/about" onClick={() => handleLinkClick('/about')}>About</NavLink>
-              <NavLink className="nav-link text-white" to="/contact" onClick={() => handleLinkClick('/contact')}>Contact</NavLink>
-            </div>
-            <div className="navbar-toggle block lg:hidden" onClick={toggleMenu}>
-              <span className="navbar-toggler-icon"></span>
-              <span className="navbar-toggler-icon"></span>
-              <span className="navbar-toggler-icon"></span>
-            </div>
-          </div>
-        </nav>
-
-
+<Navbar/>
        <header className="hero-section text-center">
         <video className="hero-video" autoPlay loop muted>
           <source src={interiorMainVideo} type="video/mp4" />
@@ -90,19 +118,19 @@ const Home = () => {
 
   <div className="offerings row ml-28">
     <div className="col offeringBox ">
-    <NavLink to="/modular"  onClick={() => handleLinkClick('/modular')}>
+    <NavLink to="/modular" >
      <img className='offerImg h-80 shadow-lg p-8 hover:opacity-50 hover:rotate-12  transition-transform duration-700' style={{borderRadius:"50%"}} src={modularImg} alt="" />
       </NavLink>
       <p className='offerText text-3xl font-thin mt-3 mr-28 text-pretty'>Modular Interior</p>
     </div>
     <div className="col offeringBox ">
-    <NavLink to="/fullhome"  onClick={() => handleLinkClick('/fullhome')}>
+    <NavLink to="/fullhome">
     <img className='offerImg h-80 shadow-lg p-8 hover:opacity-50 hover:rotate-12  transition-transform duration-700' style={{borderRadius:"50%"}} src={FullInteriorImg} alt="" />
     </NavLink>
     <p className='offerText text-3xl font-thin mt-3 mr-28'>Full Home Interior</p>
     </div>
     <div className="col offeringBox ">
-    <NavLink to="/luxury" onClick={() => handleLinkClick('/luxury')}>
+    <NavLink to="/luxury" >
     <img className='offerImg h-80 w-80 shadow-lg p-8 hover:opacity-50 hover:rotate-12  transition-transform duration-700' style={{borderRadius:"50%"}} src={luxuryImg} alt="" />
     </NavLink>
     <p className=' offerText text-3xl font-thin mt-3 mr-28'>Luxury Interior</p>
@@ -127,37 +155,32 @@ const Home = () => {
         <h5 className="modal-title ml-3 mx-auto text-red-600 text-2xl">Submit Your Details</h5>
         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div className="modal-body">
+      <div className="modal-body" style={{height:"410px"}}>
       {showMsg ? (
                 <div className="formSubmittedMsg text-center mx-auto mr-16 bg-sky-600 shadow-lg pr-4">
-                  <p className="text-sky-700 text-lg mb-2">{userDetails.name}! Your Form Has Been Submitted <Done />.</p>
+                  <p className="text-sky-700 text-lg mb-2">{userDetails.name}! Your Form Has Been Submitted <Done/>.</p>
                   <p className="text-sky-700 text-lg mb-2">We will contact you soon.</p>
                   <button onClick={() => setShowMsg(false)} data-bs-dismiss="modal" className="btn btn-outline-success mt-3 py-2 px-4">OK</button>
                 </div>
               ) : (
 
-                <form className="contact-form bg-zinc-200 text-center" onSubmit={handleSubmit}>
-    <input className="contactBoxInputs w-96 h-14 text-lg mt-5 pl-3 rounded-md" required type="text" value={userDetails.name} id="name" name="name"  onChange={inputEvt} placeholder="Your Name...."/>
-    <input className="contactBoxInputs w-96 h-14 text-lg mt-3 pl-3 rounded-md" required type="email" value={userDetails.email} id="email" name="email"  onChange={inputEvt} placeholder="Email ID...."/>
-    <input className="contactBoxInputs w-96 h-14 text-lg mt-3 pl-3 rounded-md" required type="phone" value={userDetails.phone} id="phone" name="phone"  onChange={inputEvt} placeholder="Phone Number...."/>
-
+                <form className="contact-form bg-zinc-200 text-center" style={{height:"380px"}} onSubmit={handleSubmit}>
+    <input className="contactBoxInputs w-96 h-14 text-lg mt-6 pl-3 rounded-md" required type="text" value={userDetails.name} id="name" name="name"  onChange={inputEvt} placeholder="Your UserName...."/>
+    <input className="contactBoxInputs w-96 h-14 text-lg mt-4 pl-3 rounded-md" required type="email" value={userDetails.email} id="email" name="email"  onChange={inputEvt} placeholder="Email ID...."/>
+ <textarea name="message" onChange={inputEvt}
+              value={userDetails.message}
+              className="w-96 h-14 mt-4 m-2 pl-3"
+              required placeholder="Your Message"> </textarea>
 
     <div class="form-check flex justify-center items-center my-2" style={{columnGap:"1rem"}}>
-  <input class="form-check-input contactBoxInputs mt-4 h-5 w-5 pl-3 rounded-md" type="checkbox" value="" id="flexCheckIndeterminate"/>
-  <label class="form-check-label text-zinc-500 text-xl mt-4" for="flexCheckIndeterminate">
+  <input class="form-check-input contactBoxInputs mt-2 h-5 w-5 pl-3 rounded-md" type="checkbox" value="" id="flexCheckIndeterminate"/>
+  <label class="form-check-label text-zinc-500 text-xl mt-2" for="flexCheckIndeterminate">
   Send me updates on WhatsApp
   </label>
 </div>
-     <input className="contactBoxInputs w-96 h-14 text-lg mt-3 pl-3 rounded-md" type="propertyname" id="propertyname" required name="propertyname" value={userDetails.propertyname}  onChange={inputEvt} placeholder="Property Name" />
-     <br />
-     <button className=" btn btn-outline-danger rounded-full mt-4 py-2 px-3 text-lg mb-3">Get Free Quote</button>
+     <button className=" btn btn-outline-danger rounded-full mt-4  px-3 text-lg ">Sumbit</button>
      </form>
                   )}
-
-              <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" className="btn btn-primary">Save changes</button>
-      </div>
     </div>
   </div>
   </div>

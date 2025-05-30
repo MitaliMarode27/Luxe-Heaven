@@ -6,7 +6,7 @@ const About = () => {
     return(
       <>
       <Navbar/>
-           <div className="d-flex align-items-center justify-center bg-slate-700" style={{height:"90vh", width:"100%", columnGap:"1rem"}}>
+           <div className="d-flex align-items-center justify-center mt-4 bg-slate-700" style={{height:"90vh", width:"100%", columnGap:"1rem"}}>
             <div className=" p-4 text-slate-100" style={{height:"500px", width:"500px"}}>
                 <h1 className=" text-4xl pb-4">Why Choose Us ?</h1>
                 <p className="text-lg pb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque eius, voluptatum, fugit, vero nemo ipsam nostrum hic commodi perspiciatis deleniti ab.  </p>
